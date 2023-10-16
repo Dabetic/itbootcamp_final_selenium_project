@@ -27,7 +27,6 @@ public class LoginPage extends BasicPage{
         return driver.findElement(By.cssSelector("[role='status']>ul>li"));
     }
 
-
 }
 
 

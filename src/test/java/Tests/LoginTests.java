@@ -64,8 +64,27 @@ public class LoginTests extends BasicTest {
 
     }
 
+    @Test (priority = 5, retryAnalyzer = RetryAnalyzer.class)
+    public void verifyLogin () {
+        String email = "admin@admin.com";
+        String password = "12345";
+        navPage.getLoginBtn().click();
+        loginPage.getEmailInput().clear();
+        loginPage.getEmailInput().sendKeys(email);
+        loginPage.getPasswordInput().clear();
+        loginPage.getPasswordInput().sendKeys(password);
+        loginPage.getLoginBtn().click();
+        Assert.assertEquals(baseUrl + "home",
+                "https://vue-demo.daniel-avellaneda.com/home",
+                "Actual URL doesn't match expected URL");
+    }
 
-
+    @Test (priority = 6, retryAnalyzer = RetryAnalyzer.class)
+    public void verifyLogout () {
+        verifyLogin();
+        Assert.assertTrue(navPage.getLogoutBtn().isDisplayed());
+        navPage.getLogoutBtn().click();
+    }
 
 
 }
