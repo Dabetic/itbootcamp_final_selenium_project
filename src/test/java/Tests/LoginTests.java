@@ -19,9 +19,9 @@ public class LoginTests extends BasicTest {
     @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
     public void checkInputTypes () {
         navPage.getLoginBtn().click();
-       Assert.assertEquals("email", loginPage.getEmailInput().getAttribute("type") ,
+       Assert.assertEquals( loginPage.getEmailInput().getAttribute("type"),"email",
                "Actual attribute value doesn't match expected attribute value");
-        Assert.assertEquals("password", loginPage.getPasswordInput().getAttribute("type") ,
+        Assert.assertEquals( loginPage.getPasswordInput().getAttribute("type"), "password",
                 "Actual attribute value doesn't match expected attribute value");
     }
 
@@ -84,6 +84,9 @@ public class LoginTests extends BasicTest {
         verifyLogin();
         Assert.assertTrue(navPage.getLogoutBtn().isDisplayed());
         navPage.getLogoutBtn().click();
+        Assert.assertEquals(baseUrl + "login",
+                "https://vue-demo.daniel-avellaneda.com/login",
+                "Actual URL doesn't match expected URL");
     }
 
 

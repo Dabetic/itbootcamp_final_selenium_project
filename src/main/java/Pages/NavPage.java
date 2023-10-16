@@ -26,4 +26,8 @@ public class NavPage extends BasicPage{
         return driver.findElement(By.cssSelector(".btnAdmin"));
     }
 
+    public WebElement getSignUpBtn () {
+        return driver.findElement(By.cssSelector("[href='/signup'].btnLogin"));
+    }
+
 }
