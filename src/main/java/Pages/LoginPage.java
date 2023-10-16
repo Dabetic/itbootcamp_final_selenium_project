@@ -10,6 +10,7 @@ public class LoginPage extends BasicPage{
         super(driver, wait);
     }
 
+
     public WebElement getEmailInput () {
         return driver.findElement(By.cssSelector("#email"));
     }
@@ -25,6 +26,7 @@ public class LoginPage extends BasicPage{
     public WebElement getUserDoesnotExistPopUp () {
         return driver.findElement(By.cssSelector("[role='status']>ul>li"));
     }
+
 
 }
 

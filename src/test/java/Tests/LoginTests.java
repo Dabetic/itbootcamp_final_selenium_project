@@ -45,6 +45,27 @@ public class LoginTests extends BasicTest {
                 "Actual URL doesn't match expected URL");
     }
 
+    @Test (priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void displayErrorsWhenPasswordIsWrong () {
+        String email = "admin@admin.com";
+        String password = "password123";
+        navPage.getLoginBtn().click();
+        loginPage.getEmailInput().clear();
+        loginPage.getEmailInput().sendKeys(email);
+        loginPage.getPasswordInput().clear();
+        loginPage.getPasswordInput().sendKeys(password);
+        loginPage.getLoginBtn().click();
+        Assert.assertEquals(loginPage.getUserDoesnotExistPopUp().getText(),
+                "Wrong password",
+                "Actual pop up message doesn't match expected pop up message");
+        Assert.assertEquals(baseUrl + "login",
+                "https://vue-demo.daniel-avellaneda.com/login",
+                "Actual URL doesn't match expected URL");
+
+    }
+
+
+
 
 
 }
