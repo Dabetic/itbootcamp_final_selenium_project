@@ -10,6 +10,14 @@ public class LoginPage extends BasicPage{
         super(driver, wait);
     }
 
+    public WebElement getEmailInput () {
+        return driver.findElement(By.cssSelector("#email"));
+    }
+
+    public WebElement getPasswordInput () {
+        return driver.findElement(By.cssSelector("#password"));
+    }
+
 }
 
 

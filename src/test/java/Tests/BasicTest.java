@@ -45,6 +45,7 @@ public abstract class BasicTest {
     public void beforeMethod() {
         driver.manage().deleteAllCookies();
         driver.navigate().to(baseUrl);
+        driver.manage().window().maximize();
     }
 
     @AfterMethod
