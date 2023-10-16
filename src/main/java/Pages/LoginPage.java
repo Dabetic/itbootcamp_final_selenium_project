@@ -18,6 +18,14 @@ public class LoginPage extends BasicPage{
         return driver.findElement(By.cssSelector("#password"));
     }
 
+    public WebElement getLoginBtn () {
+        return driver.findElement(By.cssSelector("[type='submit']"));
+    }
+
+    public WebElement getUserDoesnotExistPopUp () {
+        return driver.findElement(By.cssSelector("[role='status']>ul>li"));
+    }
+
 }
 
 
