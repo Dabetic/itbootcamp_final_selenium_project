@@ -36,8 +36,8 @@ public class LoginTests extends BasicTest {
         loginPage.getPasswordInput().sendKeys(password);
         loginPage.getLoginBtn().click();
         wait.withMessage("Pop up message isn't visible").
-                until(ExpectedConditions.visibilityOf(loginPage.getUserDoesnotExistPopUp()));
-        Assert.assertEquals(loginPage.getUserDoesnotExistPopUp().getText(),
+                until(ExpectedConditions.visibilityOf(messagePopUpPage.getUserDoesnotExistPopUp()));
+        Assert.assertEquals(messagePopUpPage.getUserDoesnotExistPopUp().getText(),
                 "User does not exists",
                 "Actual pop up message doesn't match expected pop up message");
         Assert.assertEquals(baseUrl + "login",
@@ -55,7 +55,7 @@ public class LoginTests extends BasicTest {
         loginPage.getPasswordInput().clear();
         loginPage.getPasswordInput().sendKeys(password);
         loginPage.getLoginBtn().click();
-        Assert.assertEquals(loginPage.getUserDoesnotExistPopUp().getText(),
+        Assert.assertEquals(messagePopUpPage.getUserDoesnotExistPopUp().getText(),
                 "Wrong password",
                 "Actual pop up message doesn't match expected pop up message");
         Assert.assertEquals(baseUrl + "login",

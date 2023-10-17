@@ -26,7 +26,9 @@ public class SignUpPage extends BasicPage{
         return driver.findElement(By.cssSelector("#confirmPassword"));
     }
 
-
+    public WebElement getSignMeUpBtn () {
+        return driver.findElement(By.cssSelector("[type='submit']"));
+    }
 
 
 
