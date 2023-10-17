@@ -45,19 +45,39 @@ public class SignUpTests extends BasicTest {
         signUpPage.getPasswordInput().sendKeys(password);
         signUpPage.getConfirmPasswordInput().sendKeys(confirmPassword);
         signUpPage.getSignMeUpBtn().click();
-        wait.withMessage("").
+        wait.withMessage("Pop up window doesn't appear").
                 until(ExpectedConditions.visibilityOf(messagePopUpPage.getUserDoesnotExistPopUp()));
         Assert.assertEquals(messagePopUpPage.getUserDoesnotExistPopUp().getText(),
                 "E-mail already exists",
-                "Actual attribute value doesn't match expected attribute value");
+                "Actual pop up message doesn't match expected pop up message");
         Assert.assertEquals(baseUrl + "signup",
                 "https://vue-demo.daniel-avellaneda.com/signup",
                 "Actual URL doesn't match expected URL");
     }
 
+@Test (priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void verifySignUp () {
+    String name = "Milos Dabetic";
+    String email = "m.dabetic@itbootcamp.rs";
+    String password = "12345";
+    String confirmPassword = "12345";
+    navPage.getSignUpBtn().click();
+    signUpPage.getNameInput().sendKeys(name);
+    signUpPage.getEmailInput().sendKeys(email);
+    signUpPage.getPasswordInput().sendKeys(password);
+    signUpPage.getConfirmPasswordInput().sendKeys(confirmPassword);
+    signUpPage.getSignMeUpBtn().click();
+    wait.until(ExpectedConditions.urlContains("home"));
 
+    wait.withMessage("Pop up window isn't visible").until(ExpectedConditions.visibilityOf(messagePopUpPage.getVerifyYourAccountPopUp()));
 
+    Assert.assertEquals(messagePopUpPage.getVerifyYourAccountPopUp().getText(),
+            "IMPORTANT: Verify your account",
+            "Actual pop up message doesn't match expected pop up message");
 
+    messagePopUpPage.getVerifyYourAccountCloseBtn();
+
+}
 
 
 }

@@ -13,4 +13,14 @@ public class MessagePopUpPage extends BasicPage{
     public WebElement getUserDoesnotExistPopUp () {
         return driver.findElement(By.cssSelector("[role='status']>ul>li"));
     }
+
+    public WebElement getVerifyYourAccountPopUp () {
+        return driver.findElement(By.cssSelector(".v-card>div.v-card__title"));
+    }
+
+    public WebElement getVerifyYourAccountCloseBtn () {
+        return driver.findElement(By.cssSelector(".btnClose"));
+    }
+
+
 }
