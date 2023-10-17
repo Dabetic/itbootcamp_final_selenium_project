@@ -31,5 +31,14 @@ public class NavPage extends BasicPage{
         return driver.findElement(By.cssSelector("[href='/signup']>span"));
     }
 
+    public WebElement getAdminBtn () {
+        return driver.findElement(By.cssSelector(".btnAdmin"));
+    }
+
+    public WebElement getCitiesBtn () {
+        return driver.findElement(By.cssSelector(".v-list-item__icon .mdi-city"));
+    }
+
+
 
 }
