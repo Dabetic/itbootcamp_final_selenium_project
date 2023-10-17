@@ -23,4 +23,17 @@ public class MessagePopUpPage extends BasicPage{
     }
 
 
+    public WebElement getNewItemPopUp () {
+        return driver.findElement(By.cssSelector(".v-card__title"));
+    }
+
+    public WebElement getNewItemNameFiled () {
+        return driver.findElement(By.cssSelector("#name"));
+    }
+
+
+
+
+
+
 }

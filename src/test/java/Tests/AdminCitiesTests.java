@@ -1,6 +1,7 @@
 package Tests;
 
 import Retry.RetryAnalyzer;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -23,6 +24,15 @@ public class AdminCitiesTests extends BasicTest{
                 "Actual URL doesn't match expected URL");
     }
 
+    @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    public void checkInputTypesForCreateEditNewCity () {
+    visitTheAdminCitiesPageAndListOfCities();
+    citiesPage.getNewItem().click();
+    wait.withMessage("Pop up window doesn't appear").until(ExpectedConditions.visibilityOf(messagePopUpPage.getNewItemNameFiled()));
+    Assert.assertEquals(messagePopUpPage.getNewItemNameFiled().getAttribute("type"),
+            "text",
+            "Actual attribute value doesn't match expected attribute value");
+    }
 
 
 
