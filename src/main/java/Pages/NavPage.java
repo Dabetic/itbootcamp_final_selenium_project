@@ -24,7 +24,7 @@ public class NavPage extends BasicPage{
     }
 
     public WebElement getLogoutBtn () {
-        return driver.findElement(By.cssSelector(".btnAdmin"));
+        return driver.findElement(By.cssSelector(".btnLogout .v-btn__content"));
     }
 
     public WebElement getSignUpBtn () {

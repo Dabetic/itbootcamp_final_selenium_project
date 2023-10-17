@@ -58,7 +58,7 @@ public class SignUpTests extends BasicTest {
 @Test (priority = 4, retryAnalyzer = RetryAnalyzer.class)
     public void verifySignUp () {
     String name = "Milos Dabetic";
-    String email = "m.dabetic@itbootcamp.rs";
+    String email = "mil.dabetic@itbootcamp.rs";
     String password = "12345";
     String confirmPassword = "12345";
     navPage.getSignUpBtn().click();
@@ -74,8 +74,11 @@ public class SignUpTests extends BasicTest {
     Assert.assertEquals(messagePopUpPage.getVerifyYourAccountPopUp().getText(),
             "IMPORTANT: Verify your account",
             "Actual pop up message doesn't match expected pop up message");
-
-    messagePopUpPage.getVerifyYourAccountCloseBtn();
+    messagePopUpPage.getVerifyYourAccountCloseBtn().click();
+    navPage.getLogoutBtn().click();
+    Assert.assertEquals(baseUrl + "login",
+            "https://vue-demo.daniel-avellaneda.com/login",
+            "Actual URL doesn't match expected URL");
 
 }
 
