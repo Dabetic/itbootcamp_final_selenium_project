@@ -31,9 +31,13 @@ public class MessagePopUpPage extends BasicPage{
         return driver.findElement(By.cssSelector("#name"));
     }
 
+    public WebElement getNewItemNameFiledSaveBtn () {
+        return driver.findElement(By.cssSelector(".btnSave"));
+    }
 
-
-
+    public WebElement getPopUpSavedSuccessfully () {
+        return driver.findElement(By.cssSelector(".v-sheet.success>div"));
+    }
 
 
 }
