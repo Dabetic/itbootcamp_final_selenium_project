@@ -39,5 +39,13 @@ public class MessagePopUpPage extends BasicPage{
         return driver.findElement(By.cssSelector(".v-sheet.success>div"));
     }
 
+    public WebElement getEditACityNameInputPopUp () {
+        return driver.findElement(By.cssSelector("#name"));
+    }
+
+    public WebElement getEditACityNamePopUpSaveBtm () {
+        return driver.findElement(By.cssSelector(".btnSave"));
+    }
+
 
 }
