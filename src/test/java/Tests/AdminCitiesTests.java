@@ -100,8 +100,42 @@ public class AdminCitiesTests extends BasicTest{
 
         citiesPage.waitUntilTrSizeIsOne();
 
-        Assert.assertTrue(citiesPage.isContaisMilosCityTxt());
+        Assert.assertTrue(citiesPage.isContainsMilosCityTxt());
 
     }
 
+    @Test (priority = 6, retryAnalyzer = RetryAnalyzer.class)
+    public void deleteACity () {
+        String email = "admin@admin.com";
+        String password = "12345";
+        navPage.getLoginBtn().click();
+        loginPage.getEmailInput().clear();
+        loginPage.getEmailInput().sendKeys(email);
+        loginPage.getPasswordInput().clear();
+        loginPage.getPasswordInput().sendKeys(password);
+        loginPage.getLoginBtn().click();
+        navPage.getAdminBtn().click();
+        navPage.getCitiesBtn().click();
+
+        citiesPage.getSearchCityBtn().sendKeys("Milos Dabetic's City");
+
+        citiesPage.waitUntilTrSizeIsOne();
+
+        Assert.assertTrue(citiesPage.isContainsMilosCityTxt());
+
+        citiesPage.getDeleteCityBtn().click();
+        wait.withMessage("Pop up window doesn't appear").
+                until(ExpectedConditions.visibilityOf(messagePopUpPage.getDeletePopUp()));
+
+        messagePopUpPage.getDeletePopUpBtn().click();
+        wait.withMessage("Pop up window doesn't appear").
+                until(ExpectedConditions.visibilityOf
+                        (messagePopUpPage.getSuccesfullyDeletedPopUp()));
+
+        Assert.assertEquals(messagePopUpPage.getSuccesfullyDeletedPopUp()
+                        .getText().substring(0,20),
+                "Deleted successfully",
+                "Actual pop up message doesn't match expected pop up message");
+
+    }
 }

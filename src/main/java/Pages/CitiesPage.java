@@ -44,7 +44,11 @@ public class CitiesPage extends BasicPage{
         return cityName;
     }
 
-    public boolean isContaisMilosCityTxt () {
+    public WebElement getDeleteCityBtn () {
+        return driver.findElement(By.cssSelector("#delete"));
+    }
+
+    public boolean isContainsMilosCityTxt () {
       return tableDataNameFromTr().contains("Milos Dabetic's City");
     }
 

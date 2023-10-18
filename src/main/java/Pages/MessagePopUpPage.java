@@ -47,5 +47,18 @@ public class MessagePopUpPage extends BasicPage{
         return driver.findElement(By.cssSelector(".btnSave"));
     }
 
+    public WebElement getDeletePopUp () {
+        return driver.findElement(By.cssSelector(".v-toolbar__content .v-toolbar__title"));
+    }
+
+    public WebElement getDeletePopUpBtn () {
+        return driver.findElement(By.xpath("//*[@class='v-btn__content'][contains(text(), 'Delete')]"));
+    }
+
+    public WebElement getSuccesfullyDeletedPopUp () {
+        return driver.findElement(By.xpath("//*[contains(text(), ' Deleted successfully ')]"));
+    }
+
+
 
 }
