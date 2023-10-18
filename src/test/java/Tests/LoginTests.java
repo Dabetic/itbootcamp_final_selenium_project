@@ -12,8 +12,8 @@ public class LoginTests extends BasicTest {
     navPage.getLanguageBtn().click();
     navPage.getSelectEnglishLanguage().click();
     navPage.getLoginBtn().click();
-    Assert.assertEquals(baseUrl + "login",
-            "https://vue-demo.daniel-avellaneda.com/login",
+    Assert.assertEquals(driver.getCurrentUrl(),
+            baseUrl + "login",
             "Actual URL doesn't match expected URL");
     }
     @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
@@ -40,8 +40,8 @@ public class LoginTests extends BasicTest {
         Assert.assertEquals(messagePopUpPage.getUserDoesnotExistPopUp().getText(),
                 "User does not exists",
                 "Actual pop up message doesn't match expected pop up message");
-        Assert.assertEquals(baseUrl + "login",
-                "https://vue-demo.daniel-avellaneda.com/login",
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "login",
                 "Actual URL doesn't match expected URL");
     }
 
@@ -58,8 +58,8 @@ public class LoginTests extends BasicTest {
         Assert.assertEquals(messagePopUpPage.getUserDoesnotExistPopUp().getText(),
                 "Wrong password",
                 "Actual pop up message doesn't match expected pop up message");
-        Assert.assertEquals(baseUrl + "login",
-                "https://vue-demo.daniel-avellaneda.com/login",
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "login",
                 "Actual URL doesn't match expected URL");
 
     }
@@ -74,8 +74,8 @@ public class LoginTests extends BasicTest {
         loginPage.getPasswordInput().clear();
         loginPage.getPasswordInput().sendKeys(password);
         loginPage.getLoginBtn().click();
-        Assert.assertEquals(baseUrl + "home",
-                "https://vue-demo.daniel-avellaneda.com/home",
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "home",
                 "Actual URL doesn't match expected URL");
     }
 
@@ -84,8 +84,8 @@ public class LoginTests extends BasicTest {
         verifyLogin();
         Assert.assertTrue(navPage.getLogoutBtn().isDisplayed());
         navPage.getLogoutBtn().click();
-        Assert.assertEquals(baseUrl + "login",
-                "https://vue-demo.daniel-avellaneda.com/login",
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "login",
                 "Actual URL doesn't match expected URL");
     }
 

@@ -20,8 +20,8 @@ public class AdminCitiesTests extends BasicTest{
         loginPage.getLoginBtn().click();
         navPage.getAdminBtn().click();
         navPage.getCitiesBtn().click();
-        Assert.assertEquals(baseUrl + "admin/cities",
-                "https://vue-demo.daniel-avellaneda.com/admin/cities",
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "admin/cities",
                 "Actual URL doesn't match expected URL");
     }
 

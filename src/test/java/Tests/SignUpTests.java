@@ -10,8 +10,8 @@ public class SignUpTests extends BasicTest {
     @Test (priority = 1, retryAnalyzer = RetryAnalyzer.class)
     public void visitTheSignupPage () {
         navPage.getSignUpBtn().click();
-        Assert.assertEquals(baseUrl + "signup",
-                "https://vue-demo.daniel-avellaneda.com/signup",
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "signup",
                 "Actual URL doesn't match expected URL");
     }
 
@@ -37,8 +37,8 @@ public class SignUpTests extends BasicTest {
         String confirmPassword = "12345";
 
         navPage.getSignUpBtn().click();
-        Assert.assertEquals(baseUrl + "signup",
-                "https://vue-demo.daniel-avellaneda.com/signup",
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "signup",
                 "Actual URL doesn't match expected URL");
         signUpPage.getNameInput().sendKeys(name);
         signUpPage.getEmailInput().sendKeys(email);
@@ -50,8 +50,8 @@ public class SignUpTests extends BasicTest {
         Assert.assertEquals(messagePopUpPage.getUserDoesnotExistPopUp().getText(),
                 "E-mail already exists",
                 "Actual pop up message doesn't match expected pop up message");
-        Assert.assertEquals(baseUrl + "signup",
-                "https://vue-demo.daniel-avellaneda.com/signup",
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "signup",
                 "Actual URL doesn't match expected URL");
     }
 
@@ -76,8 +76,8 @@ public class SignUpTests extends BasicTest {
             "Actual pop up message doesn't match expected pop up message");
     messagePopUpPage.getVerifyYourAccountCloseBtn().click();
     navPage.getLogoutBtn().click();
-    Assert.assertEquals(baseUrl + "login",
-            "https://vue-demo.daniel-avellaneda.com/login",
+    Assert.assertEquals(driver.getCurrentUrl(),
+            baseUrl + "login",
             "Actual URL doesn't match expected URL");
 
 }
