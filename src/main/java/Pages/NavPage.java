@@ -38,6 +38,21 @@ public class NavPage extends BasicPage{
     public WebElement getCitiesBtn () {
         return driver.findElement(By.cssSelector(".v-list-item__icon .mdi-city"));
     }
+    public WebElement getSelectSpanishLanguage () {
+        return driver.findElement(By.cssSelector("#list-item-75"));
+    }
+
+    public WebElement getSelectFrenchLanguage () {
+        return driver.findElement(By.cssSelector("#list-item-77"));
+    }
+
+    public WebElement getSelectChineseLanguage () {
+        return driver.findElement(By.cssSelector("#list-item-79"));
+    }
+
+    public WebElement getHeaderOneElement () {
+        return driver.findElement(By.cssSelector(".flex.xs12>h1"));
+    }
 
 
 }
