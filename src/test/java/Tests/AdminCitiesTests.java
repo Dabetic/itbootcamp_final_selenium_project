@@ -69,7 +69,7 @@ public class AdminCitiesTests extends BasicTest{
         navPage.getAdminBtn().click();
         navPage.getCitiesBtn().click();
         citiesPage.getSearchCityBtn().sendKeys("Milos Dabetic's City");
-        citiesPage.waitUntilTrSizeIsOne();
+        citiesPage.waitUntilTableRowSizeIs(1);
         citiesPage.getEditCityBtn().click();
         messagePopUpPage.getEditACityNameInputPopUp().sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
 
@@ -98,7 +98,7 @@ public class AdminCitiesTests extends BasicTest{
 
         citiesPage.getSearchCityBtn().sendKeys("Milos Dabetic's City");
 
-        citiesPage.waitUntilTrSizeIsOne();
+        citiesPage.waitUntilTableRowSizeIs(1);
 
         Assert.assertTrue(citiesPage.isContainsMilosCityTxt());
 
@@ -119,11 +119,11 @@ public class AdminCitiesTests extends BasicTest{
 
         citiesPage.getSearchCityBtn().sendKeys("Milos Dabetic's City");
 
-        citiesPage.waitUntilTrSizeIsOne();
+        citiesPage.waitUntilTableRowSizeIs(1);
 
         Assert.assertTrue(citiesPage.isContainsMilosCityTxt());
 
-        citiesPage.getDeleteCityBtn().click();
+        citiesPage.deleteAnAdminCityRow(1).click();
         wait.withMessage("Pop up window doesn't appear").
                 until(ExpectedConditions.visibilityOf(messagePopUpPage.getDeletePopUp()));
 

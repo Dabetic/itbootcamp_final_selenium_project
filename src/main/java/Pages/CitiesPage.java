@@ -29,24 +29,31 @@ public class CitiesPage extends BasicPage{
         return driver.findElement(By.cssSelector("#edit"));
     }
 
-    public void waitUntilTrSizeIsOne () {
+    public void waitUntilTableRowSizeIs(int numberOfRows) {
         wait.withMessage("Actual number of elements doesn't match expected number of elements")
                 .until(ExpectedConditions.numberOfElementsToBe
-                        (By.cssSelector("tbody tr .text-left:nth-child(2)"),1));
+                        (By.cssSelector("tbody .text-start"),numberOfRows));
+
     }
 
     public String tableDataNameFromTr () {
         List<WebElement>tableRowElements = getCitiesTrNumber();
         String cityName = null;
         for (int i = 0; i < tableRowElements.size(); i++) {
-            cityName = tableRowElements.get(i).findElement(By.cssSelector(".text-left:nth-child(2)")).getText();
+            cityName = tableRowElements.get(i).findElement(By.cssSelector("tbody tr td:nth-child(2)")).getText();
         }
         return cityName;
     }
 
-    public WebElement getDeleteCityBtn () {
-        return driver.findElement(By.cssSelector("#delete"));
+    public WebElement deleteAnAdminCityRow(int numberOfRow) {
+        List<WebElement>deleteTableRowButtonList = getCitiesTrNumber();
+        WebElement deleteBtn = null;
+        for (int i = 0; i < deleteTableRowButtonList.size(); i++) {
+            deleteBtn = deleteTableRowButtonList.get(i).findElement(By.cssSelector(":nth-child(" + (numberOfRow) + ") .text-start div #delete"));
+        }
+        return deleteBtn;
     }
+
 
     public boolean isContainsMilosCityTxt () {
       return tableDataNameFromTr().contains("Milos Dabetic's City");
