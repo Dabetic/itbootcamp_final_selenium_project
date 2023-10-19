@@ -59,6 +59,8 @@ public class MessagePopUpPage extends BasicPage{
         return driver.findElement(By.xpath("//*[contains(text(), ' Deleted successfully ')]"));
     }
 
-
+    public WebElement getProfileSavedSuccessfulyPopUp () {
+        return driver.findElement(By.xpath(" //*[contains(text(), ' Profile saved successfuly ')]"));
+    }
 
 }

@@ -48,4 +48,12 @@ public class ProfilePage extends BasicPage{
         return driver.findElement(By.cssSelector("#phone"));
     }
 
+    public WebElement getProfileSaveBtn () {
+        return driver.findElement(By.cssSelector(".btnSave"));
+    }
+
+    public WebElement getProfileBucaramangaCity () {
+        return driver.findElement(By.xpath("//*[contains(text(), 'Bucaramanga')]"));
+    }
+
 }
