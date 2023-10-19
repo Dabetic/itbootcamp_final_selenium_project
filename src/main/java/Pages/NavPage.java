@@ -54,5 +54,9 @@ public class NavPage extends BasicPage{
         return driver.findElement(By.cssSelector(".flex.xs12>h1"));
     }
 
+    public WebElement getMyProfileBtn () {
+        return driver.findElement(By.cssSelector(".btnProfile"));
+    }
+
 
 }
