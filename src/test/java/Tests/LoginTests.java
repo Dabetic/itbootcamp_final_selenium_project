@@ -55,6 +55,11 @@ public class LoginTests extends BasicTest {
         loginPage.getPasswordInput().clear();
         loginPage.getPasswordInput().sendKeys(password);
         loginPage.getLoginBtn().click();
+
+
+        wait.withMessage("Pop up dialog shouldn't be visible").
+                until(ExpectedConditions.invisibilityOf(profilePage.getPleaseWaitPopUp()));
+
         Assert.assertEquals(messagePopUpPage.getUserDoesnotExistPopUp().getText(),
                 "Wrong password",
                 "Actual pop up message doesn't match expected pop up message");
@@ -74,6 +79,10 @@ public class LoginTests extends BasicTest {
         loginPage.getPasswordInput().clear();
         loginPage.getPasswordInput().sendKeys(password);
         loginPage.getLoginBtn().click();
+
+        wait.withMessage("Pop up dialog shouldn't be visible").
+                until(ExpectedConditions.invisibilityOf(profilePage.getPleaseWaitPopUp()));
+
         Assert.assertEquals(driver.getCurrentUrl(),
                 baseUrl + "home",
                 "Actual URL doesn't match expected URL");
@@ -81,7 +90,21 @@ public class LoginTests extends BasicTest {
 
     @Test (priority = 6, retryAnalyzer = RetryAnalyzer.class)
     public void verifyLogout () {
-        verifyLogin();
+        String email = "admin@admin.com";
+        String password = "12345";
+        navPage.getLoginBtn().click();
+        loginPage.getEmailInput().clear();
+        loginPage.getEmailInput().sendKeys(email);
+        loginPage.getPasswordInput().clear();
+        loginPage.getPasswordInput().sendKeys(password);
+        loginPage.getLoginBtn().click();
+
+        wait.withMessage("Pop up dialog shouldn't be visible").
+                until(ExpectedConditions.invisibilityOf(profilePage.getPleaseWaitPopUp()));
+
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "home",
+                "Actual URL doesn't match expected URL");
         Assert.assertTrue(navPage.getLogoutBtn().isDisplayed());
         navPage.getLogoutBtn().click();
         Assert.assertEquals(driver.getCurrentUrl(),

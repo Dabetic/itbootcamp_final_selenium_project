@@ -35,6 +35,10 @@ public class MessagePopUpPage extends BasicPage{
         return driver.findElement(By.cssSelector(".btnSave"));
     }
 
+    public  WebElement getNewItemPopUpCancelBtn () {
+        return driver.findElement(By.cssSelector(".btnCancel "));
+    }
+
     public WebElement getPopUpSavedSuccessfully () {
         return driver.findElement(By.cssSelector(".v-sheet.success>div"));
     }

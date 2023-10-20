@@ -31,6 +31,9 @@ public class ProfileTests extends BasicTest{
                 "admin@admin.com",
                 "Actual email address doesn't match expected email address");
 
+        navPage.getLogoutBtn().click();
+
+
     }
 
     @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
@@ -126,7 +129,7 @@ public class ProfileTests extends BasicTest{
 
         profilePage.getProfileSaveBtn().click();
 
-        wait.withMessage("Pop up dialog shouldn't be visible").
+        wait.withMessage("Pop up dialog should be visible").
                 until(ExpectedConditions.visibilityOf(messagePopUpPage.getPopUpSavedSuccessfully()));
 
         Assert.assertEquals(messagePopUpPage.getProfileSavedSuccessfulyPopUp().getText().substring(0,25),

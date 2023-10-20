@@ -23,24 +23,60 @@ public class AdminCitiesTests extends BasicTest{
         Assert.assertEquals(driver.getCurrentUrl(),
                 baseUrl + "admin/cities",
                 "Actual URL doesn't match expected URL");
+
+        navPage.getLogoutBtn().click();
+
     }
 
     @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
     public void checkInputTypesForCreateEditNewCity () {
-    visitTheAdminCitiesPageAndListOfCities();
-    citiesPage.getNewItem().click();
-    wait.withMessage("Pop up window doesn't appear").
+        String email = "admin@admin.com";
+        String password = "12345";
+        navPage.getLoginBtn().click();
+        loginPage.getEmailInput().clear();
+        loginPage.getEmailInput().sendKeys(email);
+        loginPage.getPasswordInput().clear();
+        loginPage.getPasswordInput().sendKeys(password);
+        loginPage.getLoginBtn().click();
+        navPage.getAdminBtn().click();
+        navPage.getCitiesBtn().click();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "admin/cities",
+                "Actual URL doesn't match expected URL");
+
+        citiesPage.getNewItem().click();
+        wait.withMessage("Pop up window doesn't appear").
             until(ExpectedConditions.visibilityOf(messagePopUpPage.getNewItemNameFiled()));
-    Assert.assertEquals(messagePopUpPage.getNewItemNameFiled().getAttribute("type"),
+
+        Assert.assertEquals(messagePopUpPage.getNewItemNameFiled().getAttribute("type"),
             "text",
             "Actual attribute value doesn't match expected attribute value");
-    }
 
+        messagePopUpPage.getNewItemPopUpCancelBtn().click();
+        wait.withMessage("Pop up window doesn't appear").
+                until(ExpectedConditions.invisibilityOf(messagePopUpPage.getNewItemNameFiled()));
+
+        navPage.getLogoutBtn().click();
+
+    }
 
     @Test (priority = 3, retryAnalyzer = RetryAnalyzer.class)
     public void createANewCity () {
         String city = "Milos Dabetic's City";
-        visitTheAdminCitiesPageAndListOfCities();
+        String email = "admin@admin.com";
+        String password = "12345";
+        navPage.getLoginBtn().click();
+        loginPage.getEmailInput().clear();
+        loginPage.getEmailInput().sendKeys(email);
+        loginPage.getPasswordInput().clear();
+        loginPage.getPasswordInput().sendKeys(password);
+        loginPage.getLoginBtn().click();
+        navPage.getAdminBtn().click();
+        navPage.getCitiesBtn().click();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "admin/cities",
+                "Actual URL doesn't match expected URL");
+
         citiesPage.getNewItem().click();
         wait.withMessage("Pop up window doesn't appear").
                 until(ExpectedConditions.visibilityOf(messagePopUpPage.getNewItemNameFiled()));
@@ -53,6 +89,8 @@ public class AdminCitiesTests extends BasicTest{
         Assert.assertEquals(messagePopUpPage.getPopUpSavedSuccessfully().getText().substring(0,18),
                 "Saved successfully",
                 "Actual pop up message doesn't match expected pop up message");
+
+        navPage.getLogoutBtn().click();
     }
 
 
@@ -67,12 +105,13 @@ public class AdminCitiesTests extends BasicTest{
         loginPage.getPasswordInput().sendKeys(password);
         loginPage.getLoginBtn().click();
         navPage.getAdminBtn().click();
+
         navPage.getCitiesBtn().click();
         citiesPage.getSearchCityBtn().sendKeys("Milos Dabetic's City");
         citiesPage.waitUntilTableRowSizeIs(1);
+
         citiesPage.getEditCityBtn().click();
         messagePopUpPage.getEditACityNameInputPopUp().sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
-
         messagePopUpPage.getEditACityNameInputPopUp().sendKeys("Edited Milos Dabetic's City");
         messagePopUpPage.getEditACityNamePopUpSaveBtm().click();
 
@@ -82,7 +121,11 @@ public class AdminCitiesTests extends BasicTest{
         Assert.assertEquals(messagePopUpPage.getPopUpSavedSuccessfully().getText().substring(0,18),
                 "Saved successfully",
                 "Actual pop up message doesn't match expected pop up message");
+
+        navPage.getLogoutBtn().click();
     }
+
+
     @Test (priority = 5, retryAnalyzer = RetryAnalyzer.class)
     public void searchACity () {
         String email = "admin@admin.com";
@@ -102,7 +145,10 @@ public class AdminCitiesTests extends BasicTest{
 
         Assert.assertTrue(citiesPage.isContainsMilosCityTxt());
 
+        navPage.getLogoutBtn().click();
+
     }
+
 
     @Test (priority = 6, retryAnalyzer = RetryAnalyzer.class)
     public void deleteACity () {
@@ -136,6 +182,8 @@ public class AdminCitiesTests extends BasicTest{
                         .getText().substring(0,20),
                 "Deleted successfully",
                 "Actual pop up message doesn't match expected pop up message");
+
+        navPage.getLogoutBtn().click();
 
     }
 }
