@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AdminCitiesTests extends BasicTest{
+public class AdminCitiesTests extends BasicTest {
 
     @Test (priority = 1, retryAnalyzer = RetryAnalyzer.class)
     public void visitTheAdminCitiesPageAndListOfCities () {
@@ -53,7 +53,7 @@ public class AdminCitiesTests extends BasicTest{
             "Actual attribute value doesn't match expected attribute value");
 
         messagePopUpPage.getNewItemPopUpCancelBtn().click();
-        wait.withMessage("Pop up window doesn't appear").
+        wait.withMessage("Pop up window is visible").
                 until(ExpectedConditions.invisibilityOf(messagePopUpPage.getNewItemNameFiled()));
 
         navPage.getLogoutBtn().click();
